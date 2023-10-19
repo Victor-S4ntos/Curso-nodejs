@@ -5,17 +5,15 @@ function extraiLinks(texto) {
   const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
   const capturas = [...texto.matchAll(regex)];
   const resultados = capturas.map(captura => ({[captura[1]]: captura[2]}))
-  if(resultados.length !== 0) {
-    return resultados;
-  }else {
-    console.error(chalk.red('Não há links no arquivo'));
-  }
+  return resultados.length !== 0 ? resultados : 'não há links no arquivo';
 }
 
 function trataErro(erro) {
   console.log(erro);
   throw new Error(chalk.red(erro.code, 'não há arquivo no diretório'));
 }
+
+// async/await
 
 async function pegaArquivo(caminhoDoArquivo) {
   try {

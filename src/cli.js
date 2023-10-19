@@ -11,8 +11,11 @@ function imprimeLista(resultado, identificador = '') {
     resultado);
 }
 
+
 async function processaTexto(argumentos) {
   const caminho = argumentos[2];
+  const valida = argumentos[3]
+  console.log(valida)
 
   try {
     fs.lstatSync(caminho);
@@ -31,7 +34,7 @@ async function processaTexto(argumentos) {
     arquivos.forEach(async (nomeDeArquivo) => {
       const lista = await pegaArquivo(`${caminho}/${nomeDeArquivo}`)
       imprimeLista(lista, nomeDeArquivo)
-    });
+    })
   }
 }
 
